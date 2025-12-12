@@ -18,10 +18,11 @@ window.chatData['fund'] = {
         { type: 'system', amount: '220,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
         { type: 'ai', text: '11월분 지급 완료되었습니다.' },
 
-        { type: 'date', text: '2025년 12월 11일 (어제)' },
+        { type: 'date', text: '2025년 12월 11일' },
         { type: 'user', text: 'K-Cloud 쪽 서버 증설 비용 지금 바로 보내.' },
         { type: 'ai', text: '다크웹 믹싱 서버를 경유하여 송금합니다. 추적 불가능합니다.' },
         { type: 'system', amount: '200,000,000', receiver: 'K-CLOUD Solutions', desc: '서버 증설 및 유지보수 (선수금)' },
         { type: 'ai', text: '송금 완료. 의뢰(Code: Elimination)가 접수되었습니다.' }
     ]
 };
+
