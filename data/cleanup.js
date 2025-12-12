@@ -85,6 +85,6 @@ window.chatData['cleanup'] = {
                             </div>
                         </div>`
         },
-        { type: 'user', text: '그래.. 그게 젤 깔끔하겠네. 준비해.' }
     ]
 };
+
