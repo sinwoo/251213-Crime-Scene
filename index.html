@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0d1117">
+    <title>SECRET_AGENT_V4</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #000000;
+            --list-bg: #0d1117;
+            --header-bg: rgba(22, 27, 34, 0.9);
+            --item-hover: #161b22;
+            --user-bubble: #238636;
+            --ai-bubble: #21262d;
+            --system-bubble: #1f2428;
+            --text-main: #e6edf3;
+            --text-sub: #8b949e;
+            --accent: #58a6ff;
+            --danger: #f85149;
+            --warning: #d29922;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            font-family: 'Noto Sans KR', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            color: var(--text-main);
+        }
+
+        /* 공통 헤더 */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            padding-top: env(safe-area-inset-top);
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-left: 20px;
+            padding-right: 20px;
+            z-index: 100;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .header-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .back-btn {
+            font-size: 20px;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 10px;
+            margin-left: -10px;
+            display: none;
+            /* 기본 숨김 */
+        }
+
+        /* 페이지 컨테이너 */
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding-top: calc(60px + env(safe-area-inset-top));
+            /* 헤더 높이만큼 */
+            overflow-y: auto;
+            background-color: var(--list-bg);
+            transition: transform 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        #chatView {
+            transform: translateX(100%);
+            /* 오른쪽으로 숨겨둠 */
+            background-color: var(--bg-color);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #chatView.active {
+            transform: translateX(0);
+        }
+
+        /* 리스트 뷰 스타일 */
+        .chat-list-item {
+            display: flex;
+            padding: 15px 20px;
+            border-bottom: 1px solid #21262d;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat-list-item:active {
+            background-color: var(--item-hover);
+        }
+
+        .list-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background-color: #21262d;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .list-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .list-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+
+        .list-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .list-time {
+            font-size: 12px;
+            color: var(--text-sub);
+        }
+
+        .list-preview {
+            font-size: 13px;
+            color: var(--text-sub);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 250px;
+        }
+
+        /* 채팅 뷰 스타일 */
+        .chat-container {
+            padding: 20px;
+            padding-bottom: 20px;
+            /* 입력창 공간 */
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .date-divider {
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-sub);
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .date-divider::before,
+        .date-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background-color: #30363d;
+        }
+
+        .date-divider::before {
+            left: 0;
+        }
+
+        .date-divider::after {
+            right: 0;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+            word-break: break-word;
+        }
+
+        .msg-ai {
+            align-self: flex-start;
+            background-color: var(--ai-bubble);
+            border: 1px solid #30363d;
+            border-bottom-left-radius: 4px;
+        }
+
+        .msg-user {
+            align-self: flex-end;
+            background-color: var(--user-bubble);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* 시스템/송금 메시지 스타일 */
+        .msg-system {
+            align-self: center;
+            width: 100%;
+            max-width: 90%;
+            background-color: var(--system-bubble);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .transfer-card {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .transfer-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-sub);
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+        }
+
+        .transfer-amount {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .transfer-info {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .status-badge {
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background-color: rgba(46, 160, 67, 0.2);
+            color: #3fb950;
+        }
+
+        /* 하단 입력창 */
+        .input-area {
+            position: relative;
+            /* bottom: 0; left: 0; right: 0; removed for relative positioning */
+            height: 70px;
+            background-color: var(--list-bg);
+            border-top: 1px solid #30363d;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            padding-bottom: env(safe-area-inset-bottom);
+            z-index: 60;
+        }
+
+        .input-fake {
+            flex: 1;
+            height: 40px;
+            background-color: var(--bg-color);
+            border-radius: 20px;
+            border: 1px solid #30363d;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            color: var(--text-sub);
+            font-size: 14px;
+        }
+
+        /* 아이콘 색상 */
+        .icon-red {
+            color: var(--danger);
+        }
+
+        .icon-blue {
+            color: var(--accent);
+        }
+
+        .icon-gold {
+            color: var(--warning);
+        }
+
+        /* 시스템 진단 박스 스타일 */
+        .sys-diagnosis {
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 10px 0;
+            position: relative;
+            overflow: hidden;
+            border-left: 3px solid var(--danger);
+        }
+
+        .sys-diagnosis::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 95%, rgba(248, 81, 73, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .sys-header {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-sub);
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .sys-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .sys-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .text-danger {
+            color: var(--danger);
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(248, 81, 73, 0.3);
+        }
+
+        .sys-footer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #21262d;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .highlight-red {
+            color: var(--danger);
+            font-weight: bold;
+            background: rgba(248, 81, 73, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+
+        .sys-data {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: rgba(56, 139, 253, 0.15);
+            color: #58a6ff;
+            border: 1px solid rgba(56, 139, 253, 0.4);
+            border-radius: 4px;
+            padding: 1px 4px;
+            font-size: 0.9em;
+            margin: 0 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 헤더 -->
+    <div class="app-header">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-chevron-left back-btn" onclick="goBack()"></i>
+            <div class="header-title" id="headerTitle">SECRET_AGENT_V4</div>
+        </div>
+        <i class="fas fa-cog" style="color: var(--text-sub);"></i>
+    </div>
+
+    <!-- 1. 리스트 뷰 -->
+    <div id="listView" class="page">
+        <div style="padding: 10px 20px; font-size: 12px; color: var(--text-sub); font-family: 'JetBrains Mono';">
+            SECURITY LEVEL: <span style="color: var(--danger); font-weight: bold;">MAXIMUM</span>
+        </div>
+
+        <!-- 채팅방 1: 정은재 관련 -->
+        <div class="chat-list-item" onclick="openChat('target')">
+            <div class="list-avatar">
+                <i class="fas fa-crosshairs icon-red"></i>
+            </div>
+            <div class="list-content">
+                <div class="list-top">
+                    <span class="list-name">TARGET_ANALYSIS</span>
+                    <span class="list-time">15:04</span>
+                </div>
+                <div class="list-preview">AI: "그를 죽이지 않고는 본질적인 해결이 되지 않습니다."</div>
+            </div>
+        </div>
+
+        <!-- 채팅방 2: 마약 유통망 -->
+        <div class="chat-list-item" onclick="openChat('supply')">
+            <div class="list-avatar">
+                <i class="fas fa-boxes-stacked icon-blue"></i>
+            </div>
+            <div class="list-content">
+                <div class="list-top">
+                    <span class="list-name">SUPPLY_CHAIN_MGT</span>
+                    <span class="list-time">11:30</span>
+                </div>
+                <div class="list-preview">물량 조절하세요. 꼬리 잡히기 싫으면.</div>
+            </div>
+        </div>
+
+        <!-- 채팅방 3: 자금 관리 -->
+        <div class="chat-list-item" onclick="openChat('fund')">
+            <div class="list-avatar">
+                <i class="fas fa-coins icon-gold"></i>
+            </div>
+            <div class="list-content">
+                <div class="list-top">
+                    <span class="list-name">FUND_MANAGER</span>
+                    <span class="list-time">어제</span>
+                </div>
+                <div class="list-preview">K-CLOUD Server 비용 송금 완료 (2.0억)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. 채팅 디테일 뷰 -->
+    <div id="chatView" class="page">
+        <div class="chat-container" id="chatContent">
+            <!-- 자바스크립트로 내용 로드됨 -->
+        </div>
+
+        <!-- 하단 입력창 -->
+        <div class="input-area">
+            <i class="fas fa-plus" style="color: var(--text-sub); padding-right: 10px;"></i>
+            <div class="input-fake">메시지를 입력하세요...</div>
+            <div
+                style="width: 40px; height: 40px; background: #238636; border-radius: 50%; margin-left: 10px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-paper-plane" style="color: white; font-size: 14px;"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 데이터 로드 (conversation data loaded from external files) -->
+    <script>window.chatData = {};</script>
+    <script src="data/target.js"></script>
+    <script src="data/supply.js"></script>
+    <script src="data/fund.js"></script>
+
+    <script>
+        // 채팅 데이터는 위 스크립트 파일들에서 window.chatData에 로드됩니다.
+
+        const listView = document.getElementById('listView');
+        const chatView = document.getElementById('chatView');
+        const headerTitle = document.getElementById('headerTitle');
+        const backBtn = document.querySelector('.back-btn');
+        const chatContent = document.getElementById('chatContent');
+
+        function openChat(chatId) {
+            const data = chatData[chatId];
+
+            // 헤더 변경
+            headerTitle.innerText = data.title;
+            backBtn.style.display = 'block';
+
+            // 내용 렌더링
+            chatContent.innerHTML = '';
+            data.messages.forEach(msg => {
+                if (msg.type === 'date') {
+                    chatContent.innerHTML += `<div class="date-divider">${msg.text}</div>`;
+                } else if (msg.type === 'system') {
+                    // 송금 카드 렌더링
+                    chatContent.innerHTML += `
+                        <div class="msg-system">
+                            <div class="transfer-card">
+                                <div class="transfer-header">
+                                    <i class="fas fa-university"></i> DARK_COIN_TRANSFER
+                                    <span class="status-badge status-success" style="margin-left:auto;">SUCCESS</span>
+                                </div>
+                                <div class="transfer-amount">₩ ${msg.amount}</div>
+                                <div class="transfer-info">
+                                    <span>To: ${msg.receiver}</span>
+                                </div>
+                                <div class="transfer-info" style="border-top: 1px dashed #30363d; padding-top:8px; margin-top:5px;">
+                                    <span>${msg.desc}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    // 일반 메시지
+                    const cssClass = msg.type === 'user' ? 'msg-user' : 'msg-ai';
+                    chatContent.innerHTML += `<div class="message ${cssClass}">${msg.text}</div>`;
+                }
+            });
+
+            // 화면 전환
+            chatView.classList.add('active');
+
+            // 스크롤 맨 아래로
+            setTimeout(() => {
+                chatContent.scrollTop = chatContent.scrollHeight;
+            }, 100);
+        }
+
+        function goBack() {
+            chatView.classList.remove('active');
+            headerTitle.innerText = 'SECRET_AGENT_V4';
+            backBtn.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
