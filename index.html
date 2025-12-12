@@ -415,6 +415,20 @@
             SECURITY LEVEL: <span style="color: var(--danger); font-weight: bold;">MAXIMUM</span>
         </div>
 
+        <!-- 채팅방 4: 제거 계획 -->
+        <div class="chat-list-item" onclick="openChat('cleanup')">
+            <div class="list-avatar">
+                <i class="fas fa-skull" style="color: #8b949e;"></i>
+            </div>
+            <div class="list-content">
+                <div class="list-top">
+                    <span class="list-name">CLEANUP_OPERATION</span>
+                    <span class="list-time">방금</span>
+                </div>
+                <div class="list-preview">추천 시나리오: 위장 자살 (Staged Suicide)</div>
+            </div>
+        </div>
+
         <!-- 채팅방 1: 정은재 관련 -->
         <div class="chat-list-item" onclick="openChat('target')">
             <div class="list-avatar">
@@ -456,6 +470,8 @@
                 <div class="list-preview">K-CLOUD Server 비용 송금 완료 (2.0억)</div>
             </div>
         </div>
+
+
     </div>
 
     <!-- 2. 채팅 디테일 뷰 -->
@@ -480,6 +496,7 @@
     <script src="data/target.js"></script>
     <script src="data/supply.js"></script>
     <script src="data/fund.js"></script>
+    <script src="data/cleanup.js"></script>
 
     <script>
         // 채팅 데이터는 위 스크립트 파일들에서 window.chatData에 로드됩니다.
