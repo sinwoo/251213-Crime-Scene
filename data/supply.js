@@ -134,7 +134,7 @@ window.chatData['supply'] = {
         },
         { type: 'user', text: '하.. 젠장. 냄새 맡았나 보군. 루아가 눈치챈 게 이거였어.' },
         { type: 'user', text: '야, 당장 양선희한테 연락해서 소매 판매 올스톱시켜. 당분간 죽은 듯이 있으라고 해. 몸 사려야 한다고.' },
-        { type: 'ai', text: '긴급 상황입니다. 즉시 모든 하위 조직에 "동결(Freeze)" 명령을 하달합니다.' },
+        { type: 'ai', text: '긴급 상황입니다. 즉시 모든 하위 조직에 "Freeze" 명령을 하달합니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis">
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; margin-bottom: 5px;">
@@ -157,4 +157,5 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
