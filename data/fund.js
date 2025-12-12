@@ -3,19 +3,19 @@ if (!window.chatData) window.chatData = {};
 window.chatData['fund'] = {
     title: 'FUND_MANAGER',
     messages: [
-        { type: 'date', text: '2025년 10월 15일' },
+        { type: 'date', text: '2025년 10월 1일' },
         { type: 'user', text: 'B4H2에게 10월분 수익 분배금 전송해.' },
-        { type: 'system', amount: '50,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
+        { type: 'system', amount: '190,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
         { type: 'ai', text: 'B4H2 님 계좌로 10월분 수익 분배금 세탁 후 전송 완료했습니다.' },
 
         { type: 'date', text: '2025년 11월 1일' },
         { type: 'user', text: '이번 달 용역비도 지난달과 동일하게 처리해.' },
-        { type: 'system', amount: '50,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
+        { type: 'system', amount: '240,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
         { type: 'ai', text: '11월분 정산 완료. 트랜잭션 기록은 삭제 처리했습니다.' },
 
         { type: 'date', text: '2025년 12월 1일' },
         { type: 'user', text: 'B4H2 정기 송금 진행.' },
-        { type: 'system', amount: '50,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
+        { type: 'system', amount: '220,000,000', receiver: 'B4H2', desc: '정기 용역비 지급' },
         { type: 'ai', text: '12월분 지급 완료되었습니다.' },
 
         { type: 'date', text: '2025년 12월 11일 (어제)' },
