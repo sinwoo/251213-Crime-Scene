@@ -59,7 +59,7 @@ window.chatData['cleanup'] = {
 
         // Option 3: Staged Suicide (Recommended)
         { type: 'user', text: '하.. 복잡하네. 그럼 제일 확실한 게 뭐야?' },
-        { type: 'ai', text: '최적의 솔루션은 "자살 위장"입니다. 타겟의 최근 심리 상태(불안, 우울)를 근거로 수사를 조기 종결시킬 수 있습니다.' },
+        { type: 'ai', text: '최적의 솔루션은 "위장 자살"입니다. 타겟의 최근 심리 상태(불안, 우울)를 근거로 수사를 조기 종결시킬 수 있습니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="margin-bottom: 10px; font-weight: bold; color: #3fb950;">추천 시나리오: 위장 자살 (Staged Suicide)</div>
@@ -87,4 +87,5 @@ window.chatData['cleanup'] = {
         },
     ]
 };
+
 
