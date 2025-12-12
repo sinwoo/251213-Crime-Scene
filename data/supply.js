@@ -52,6 +52,7 @@ window.chatData['supply'] = {
                         </div>`
         },
         { type: 'user', text: '좋아. 김준호한테 전해. 물건 내리자마자 바로 신호 보내라고.' },
+        { type: 'ai', text: '메시지 전송 완료.' },
 
         // 2. 중간책(강주현) 인계 및 확인
         { type: 'date', text: '2025년 12월 9일 화요일' },
@@ -158,6 +159,7 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
 
 
