@@ -61,7 +61,7 @@ window.chatData['cleanup'] = {
         { type: 'user', text: '하.. 복잡하네. 그럼 제일 확실한 게 뭐야?' },
         { type: 'ai', text: '최적의 솔루션은 "자살 위장"입니다. 타겟의 최근 심리 상태(불안, 우울)를 근거로 수사를 조기 종결시킬 수 있습니다.' },
         {
-            type: 'ai', text: `<div class="sys-diagnosis">
+            type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="margin-bottom: 10px; font-weight: bold; color: #3fb950;">추천 시나리오: 위장 자살 (Staged Suicide)</div>
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; margin-bottom: 10px;">
                                 <div class="sys-header">[SCENARIO C: SUICIDE]</div>
@@ -85,6 +85,6 @@ window.chatData['cleanup'] = {
                             </div>
                         </div>`
         },
+        { type: 'user', text: '그래.. 그게 젤 깔끔하겠네. 준비해.' }
     ]
 };
-
