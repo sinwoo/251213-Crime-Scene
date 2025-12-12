@@ -109,7 +109,7 @@ window.chatData['supply'] = {
                         </div>`
         },
         { type: 'user', text: '...너무 빠른데? 걔가 좀 급하게 구는 것 같은데.' },
-        { type: 'date', text: '2025년 12월 12일 금요일' },
+        { type: 'date', text: '2025년 12월 12일 금요일 (어제)' },
         { type: 'ai', text: '경고! 비인가 외부 접속이 감지되었습니다. 보안 프로토콜을 가동합니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis">
@@ -158,6 +158,7 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
 
 
