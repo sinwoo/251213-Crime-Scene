@@ -8,7 +8,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '이번 주 물량 스케줄 브리핑해. 선장쪽 문제없어?' },
         { type: 'ai', text: '데이터 확인 중... "뿅뿅이호"의 현재 위치를 추적했습니다.' },
         {
-            type: 'ai', text: `<div class="sys-diagnosis">
+            type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                                 <div class="sys-header">[TRACKING LOG]</div>
                                 <div class="sys-content">
@@ -31,7 +31,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '저번처럼 지연되면 곤란해. 세관 쪽 데이터는?' },
         { type: 'ai', text: '세관 통관 시스템(UNI-PASS) 접속 성공. 화물 코드를 "냉동 수산물"로 위조 완료했습니다. 검역 패스 확률 99.8%입니다.' },
         {
-            type: 'ai', text: `<div class="sys-diagnosis">
+            type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                                 <div class="sys-header">[SYSTEM ACCESS: UNI-PASS]</div>
                                 <div class="sys-content">
@@ -59,7 +59,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '강주현이 물건 픽업했나? GPS 위치 띄워.' },
         { type: 'ai', text: '강주현 님의 위치 신호가 잡혔습니다. 실시간 경로 전송합니다.' },
         {
-            type: 'ai', text: `<div class="sys-diagnosis">
+            type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                                 <div class="sys-header">[GPS TRACKER]</div>
                                 <div class="sys-content">
@@ -89,7 +89,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '분류 끝났어. A급은 내가 챙겼고, B급은 양선희한테 넘겼다. 판매 현황 어때?' },
         { type: 'ai', text: '현재 시각 기준, 다크웹 내 트래픽 및 거래량을 분석했습니다.' },
         {
-            type: 'ai', text: `<div class="sys-diagnosis">
+            type: 'ai', text: `<div class="sys-diagnosis" style="border-left-color: #3fb950;">
                             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px;">
                                 <div class="sys-header">[MARKET ANALYSIS]</div>
                                 <div class="sys-content">
@@ -99,11 +99,11 @@ window.chatData['supply'] = {
                                     </div>
                                     <div class="sys-row">
                                         <span>> Traffic:</span>
-                                        <span class="text-danger">SURGE (급증)</span>
+                                        <span style="color: #3fb950; font-weight: bold;">SURGE (급증)</span>
                                     </div>
                                     <div class="sys-row">
                                         <span>> Sales:</span>
-                                        <span class="sys-data">30 Trans/12h</span>
+                                        <span class="sys-data" style="color: #3fb950; border-color: #3fb950; background-color: rgba(63, 185, 80, 0.15);">30 Trans/12h</span>
                                     </div>
                                 </div>
                             </div>
@@ -159,6 +159,7 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
 
 
