@@ -54,7 +54,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '좋아. 김준호한테 전해. 물건 내리자마자 바로 신호 보내라고.' },
 
         // 2. 중간책(강주현) 인계 및 확인
-        { type: 'date', text: '2025년 12월 9일 화화요일' },
+        { type: 'date', text: '2025년 12월 9일 화요일' },
         { type: 'user', text: '강주현이 물건 픽업했나? GPS 위치 띄워.' },
         { type: 'ai', text: '강주현 님의 위치 신호가 잡혔습니다. 실시간 경로 전송합니다.' },
         {
@@ -158,6 +158,7 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
 
 
