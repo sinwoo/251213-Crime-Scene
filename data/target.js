@@ -6,7 +6,7 @@ window.chatData['target'] = {
         { type: 'date', text: '2025년 12월 12일 금요일 (어제)' },
 
         // 1. 위기 상황 및 AI의 즉각적인 살인 제안
-        { type: 'user', text: '야, 큰일 났어. 정은재가 결국 입을 열었어. 루아한테 다 불었다고.' },
+        { type: 'user', text: '야, 큰일 났어. 그 자식이 결국 입을 열었어. 루아한테 다 불었다고.' },
         { type: 'ai', text: '경고: 치명적(Critical) 상황입니다. 경찰 수사 및 MASTER님이 발각될 확률이 매우 높습니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis">
@@ -126,4 +126,5 @@ window.chatData['target'] = {
         }
     ]
 };
+
 
