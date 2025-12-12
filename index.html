@@ -408,7 +408,9 @@
     <div class="app-header">
         <div style="display: flex; align-items: center;">
             <i class="fas fa-chevron-left back-btn" onclick="goBack()"></i>
-            <img src="icon.png" style="width: 50px; height: 50px; margin-right: 12px; border-radius: 10px;">
+            <div id="headerIcon">
+                <img src="icon.png" style="width: 50px; height: 50px; margin-right: 12px; border-radius: 10px;">
+            </div>
             <div class="header-title" id="headerTitle">SECRET_AGENT_V4</div>
         </div>
         <i class="fas fa-cog" style="color: var(--text-sub);"></i>
@@ -511,9 +513,23 @@
         const headerTitle = document.getElementById('headerTitle');
         const backBtn = document.querySelector('.back-btn');
         const chatContent = document.getElementById('chatContent');
+        const headerIcon = document.getElementById('headerIcon');
+        const defaultIconHtml = '<img src="icon.png" style="width: 50px; height: 50px; margin-right: 12px; border-radius: 10px;">';
+
+        const chatIcons = {
+            'target': '<i class="fas fa-crosshairs icon-red"></i>',
+            'supply': '<i class="fas fa-boxes-stacked icon-blue"></i>',
+            'fund': '<i class="fas fa-coins icon-gold"></i>',
+            'cleanup': '<i class="fas fa-skull" style="color: #8b949e;"></i>'
+        };
 
         function openChat(chatId) {
             const data = chatData[chatId];
+
+            // 아이콘 변경
+            if (chatIcons[chatId]) {
+                headerIcon.innerHTML = `<div style="width: 50px; height: 50px; margin-right: 12px; border-radius: 10px; background: #161b22; display: flex; align-items: center; justify-content: center; font-size: 24px;">${chatIcons[chatId]}</div>`;
+            }
 
             // 헤더 변경
             headerTitle.innerText = data.title;
@@ -562,6 +578,7 @@
         function goBack() {
             chatView.classList.remove('active');
             headerTitle.innerText = 'SECRET_AGENT_V4';
+            headerIcon.innerHTML = defaultIconHtml;
             backBtn.style.display = 'none';
         }
     </script>
