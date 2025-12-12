@@ -3,7 +3,7 @@ if (!window.chatData) window.chatData = {};
 window.chatData['cleanup'] = {
     title: 'CLEANUP_OPERATION',
     messages: [
-        { type: 'date', text: '2025년 12월 11일 목요일' },
+        { type: 'date', text: '2025년 12월 12일 금요일' },
         { type: 'user', text: '결정했어. 그 녀석을 제거한다. 뒷말 안 나오게 가장 깔끔한 방법이 뭐야?' },
         { type: 'ai', text: '데이터베이스 검색 중... 불운한 사고로 위장하거나 자살로 종결시킬 수 있는 3가지 시나리오를 도출했습니다.' },
 
@@ -85,6 +85,6 @@ window.chatData['cleanup'] = {
                             </div>
                         </div>`
         },
-        { type: 'user', text: '그래.. 그게 젤 깔끔하겠네. 준비해.' }
     ]
 };
+
