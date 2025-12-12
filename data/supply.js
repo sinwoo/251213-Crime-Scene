@@ -54,7 +54,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '좋아. 김준호한테 전해. 물건 내리자마자 바로 신호 보내라고.' },
 
         // 2. 중간책(강주현) 인계 및 확인
-        { type: 'date', text: '2025년 12월 10일 수요일' },
+        { type: 'date', text: '2025년 12월 9일 화화요일' },
         { type: 'user', text: '강주현이 물건 픽업했나? GPS 위치 띄워.' },
         { type: 'ai', text: '강주현 님의 위치 신호가 잡혔습니다. 실시간 경로 전송합니다.' },
         {
@@ -84,7 +84,7 @@ window.chatData['supply'] = {
         { type: 'user', text: '오케이. 오늘 밤에 내가 가서 직접 수령한다. 소분 작업 준비해놔.' },
 
         // 3. 소매책(양선희) 배포 및 위기 감지
-        { type: 'date', text: '2025년 12월 11일 목요일' },
+        { type: 'date', text: '2025년 12월 10일 수요일' },
         { type: 'user', text: '분류 끝났어. A급은 내가 챙겼고, B급은 양선희한테 넘겼다. 판매 현황 어때?' },
         { type: 'ai', text: '현재 시각 기준, 다크웹 내 트래픽 및 거래량을 분석했습니다.' },
         {
@@ -109,6 +109,7 @@ window.chatData['supply'] = {
                         </div>`
         },
         { type: 'user', text: '...너무 빠른데? 걔가 좀 급하게 구는 것 같은데.' },
+        { type: 'date', text: '2025년 12월 12일 금금요일' },
         { type: 'ai', text: '경고! 비인가 외부 접속이 감지되었습니다. 보안 프로토콜을 가동합니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis">
@@ -157,5 +158,6 @@ window.chatData['supply'] = {
         }
     ]
 };
+
 
 
