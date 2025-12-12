@@ -3,7 +3,7 @@ if (!window.chatData) window.chatData = {};
 window.chatData['target'] = {
     title: 'TARGET_ANALYSIS',
     messages: [
-        { type: 'date', text: '2025년 12월 11일 목요일' },
+        { type: 'date', text: '2025년 12월 12일 금요일 (어제)' },
 
         // 1. 위기 상황 및 AI의 즉각적인 살인 제안
         { type: 'user', text: '야, 큰일 났어. 정은재가 결국 입을 열었어. 루아한테 다 불었다고.' },
@@ -126,3 +126,4 @@ window.chatData['target'] = {
         }
     ]
 };
+
