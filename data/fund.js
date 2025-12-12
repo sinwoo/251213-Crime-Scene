@@ -22,7 +22,8 @@ window.chatData['fund'] = {
         { type: 'user', text: 'K-Cloud 쪽 서버 증설 비용 지금 바로 보내.' },
         { type: 'ai', text: '다크웹 믹싱 서버를 경유하여 송금합니다. 추적 불가능합니다.' },
         { type: 'system', amount: '200,000,000', receiver: 'K-CLOUD Solutions', desc: '서버 증설 및 유지보수 (선수금)' },
-        { type: 'ai', text: '송금 완료. 의뢰(Code: Elimination)가 접수되었습니다.' }
+        { type: 'ai', text: '송금 완료. 의뢰가 접수되었습니다.' }
     ]
 };
+
 
