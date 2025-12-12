@@ -5,7 +5,7 @@ window.chatData['supply'] = {
     messages: [
         // 1. 선박 입항 및 밀수 단계
         { type: 'date', text: '2025년 12월 8일 월요일' },
-        { type: 'user', text: '이번 주 물량 스케줄 브리핑해. 김준호(선장) 쪽 문제없어?' },
+        { type: 'user', text: '이번 주 물량 스케줄 브리핑해. 선장쪽 문제없어?' },
         { type: 'ai', text: '데이터 확인 중... "뿅뿅이호"의 현재 위치를 추적했습니다.' },
         {
             type: 'ai', text: `<div class="sys-diagnosis">
@@ -79,7 +79,8 @@ window.chatData['supply'] = {
                         </div>`
         },
         { type: 'user', text: '중량 체크 확실히 하라고 해. 배달 중에 1그램이라도 비면 손목 하나라고 전해.' },
-        { type: 'ai', text: '메시지 전송 완료. 답신 수신됨: "걱정 마십쇼. 포장지 뜯지도 않았습니다. - 강주현"' },
+        { type: 'ai', text: '메시지 전송 완료.' },
+        { type: 'ai', text: '답신 수신됨: "걱정 마십쇼. 포장지 뜯지도 않았습니다. - 강주현"' },
         { type: 'user', text: '오케이. 오늘 밤에 내가 가서 직접 수령한다. 소분 작업 준비해놔.' },
 
         // 3. 소매책(양선희) 배포 및 위기 감지
@@ -156,3 +157,4 @@ window.chatData['supply'] = {
         }
     ]
 };
+
